@@ -1,0 +1,7 @@
+{
+  "name": "xilaraux-github-io",
+  "short_name": "xilaraux-github-io",
+  "description": "Personal site.",
+  "start_url": "/",
+  "display": "standalone"
+}
