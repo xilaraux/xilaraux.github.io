@@ -3,14 +3,30 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+    <meta name="theme-color" content="#00796B">
 
     <title>It's me, Oleksandr.</title>
     <meta name="description" content="Personal site.">
 
     <!-- See https://goo.gl/OOhYW5 -->
     <link rel="manifest" href="/manifest.json">
+
+    <script type="module" src="/src/app-root.js" crossorigin></script>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      html, body {
+        width: 100vw;
+        height: 100vh;
+        overflow: hidden;
+      }
+    </style>
   </head>
   <body>
-
+    <app-root redirect-to="https://oleksandr.me/"></app-root>
   </body>
 </html>
