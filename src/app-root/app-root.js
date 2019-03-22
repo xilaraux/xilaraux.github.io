@@ -1,4 +1,5 @@
 import {html, PolymerElement} from '@polymer/polymer/polymer-element.js';
+// import '../icon-toggle.js';
 
 /**
  * @customElement
@@ -10,11 +11,19 @@ class AppRoot extends PolymerElement {
       <style>
         :host {
           display: block;
+          font-family: sans-serif;
+          
+          --icon-toggle-color: red;
+          --icon-toggle-outline-color: black;
+          --icon-toggle-pressed-color: red;
         }
       </style>
       <h2>Hello [[prop1]]!</h2>
+      
+      <!-- <icon-toggle toggle-icon="star" pressed></icon-toggle> -->
     `;
   }
+
   static get properties() {
     return {
       prop1: {
