@@ -1,7 +1,22 @@
 {
-  "name": "xilaraux-github-io",
-  "short_name": "xilaraux-github-io",
+  "name": "XHub",
+  "short_name": "XHub",
   "description": "Personal site.",
-  "start_url": "/",
-  "display": "standalone"
+  "start_url": "/?pwa=true",
+  "scope": "/",
+  "display": "fullscreen",
+  "background_color": "#0097A7",
+  "theme_color": "#00796B",
+  "icons": [
+    {
+      "src": "/assets/robot-128.png",
+      "type": "image/png",
+      "sizes": "128x128"
+    },
+    {
+      "src": "/assets/robot-512.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    }
+  ]
 }
