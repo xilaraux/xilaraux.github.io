@@ -2,6 +2,7 @@
   "name": "xilaraux-github-io",
   "description": "Personal site.",
   "dependencies": {
+    "@polymer/iron-icon": "^3.0.1",
     "@polymer/polymer": "^3.0.0"
   },
   "devDependencies": {
@@ -13,6 +14,7 @@
     "wct-mocha": "^1.0.0"
   },
   "scripts": {
-    "start": "polymer serve"
+    "start": "polymer serve",
+    "build": "polymer build --js-minify --css-minify --html-minify "
   }
 }
