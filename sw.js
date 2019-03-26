@@ -1,4 +1,6 @@
 const CACHE_NAME = 'xilaraux-cache-v1';
+
+// TODO: Cache only files here and provide cache for GIPHY images.
 const urlsToCache = [
   '/src/main.css',
   '/assets/robot-128.png',
