@@ -72,6 +72,9 @@ class AppRoot extends HTMLElement {
 
     this._app && this._app.appendChild(source);
     this._app.play();
+
+    // Temporary fix for mobile Chrome
+    this._app.addEventListener('click', () => this._app.play());
   }
 }
 
