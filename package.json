@@ -2,6 +2,10 @@
   "name": "xilaraux-github-io",
   "description": "Personal site.",
   "dependencies": {},
-  "devDependencies": {},
-  "scripts": {}
+  "devDependencies": {
+    "serve": "^10.1.2"
+  },
+  "scripts": {
+    "start": "serve ."
+  }
 }
