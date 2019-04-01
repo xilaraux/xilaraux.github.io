@@ -8,43 +8,33 @@ const urlsToCache = [
 ];
 
 self.addEventListener('install', (event) => {
-  event.waitUntil(
-    caches.open(CACHE_NAME)
-      .then((cache) => {
-        console.log('Opened cache.');
-        return cache.addAll(urlsToCache);
-      })
-  );
+  event.waitUntil(async () => {
+    const cache = await caches.open(CACHE_NAME);
+
+    try {
+      await cache.addAll(urlsToCache);
+    } catch (e) {
+      console.group('SW.js:: Install');
+      console.log('Failed to fetch.');
+      console.log(e);
+      console.groupEnd();
+    }
+  });
 });
 
 self.addEventListener('fetch', (event) => {
-  event.respondWith(
-    caches.match(event.request)
-      .then((response) => {
-        if (response) {
-          return response;
-        }
+  event.respondWith(async function() {
+    const cache = await caches.open(CACHE_NAME);
+    const cachedResponse = await cache.match(event.request);
+    const networkResponsePromise = fetch(event.request);
 
-        return fetch(event.request).then(
-          (response) => {
-            if (!response || response.status !== 200 || response.type !== 'basic') {
-              return response;
-            }
+    event.waitUntil(async function() {
+      const networkResponse = await networkResponsePromise;
 
-            const responseToCache = response.clone();
+      await cache.put(event.request, networkResponse.clone());
+    }());
 
-            caches.open(CACHE_NAME)
-              .then((cache) => {
-                cache.put(event.request, responseToCache);
-              });
-
-            return response;
-          }
-        );
-      })
-  );
-});
-
-self.addEventListener('activate', (event) => {
-  console.log(event);
+    // Returned the cached response if we have one, otherwise return the network response.
+    return cachedResponse || networkResponsePromise;
+  }());
 });
